@@ -24,3 +24,46 @@ obstacle_layer:
 
 inflation_layer:
   inflation_radius: 0.2
+
+// giải thích code 
+
+/* 
+1. obstacle_range: 0.5
+Đây là khoảng cách tối đa mà một chướng ngại vật được coi là một mối đe dọa và được đánh dấu trên bản đồ chiếm dụng. Giá trị này, đo bằng mét, nên phù hợp với khả năng cảm biến của robot.
+
+2. raytrace_range: 0.5
+Khoảng cách mà costmap sẽ sử dụng để "xóa" các chướng ngại vật không còn được nhìn thấy nữa từ các điểm nhận dữ liệu cảm biến. Giá trị này thường lớn hơn obstacle_range trong hầu hết các cài đặt.
+
+3. footprint: [[-0.14, -0.14], [-0.14, 0.14], [0.14, 0.14], [0.14, -0.14]]
+Đây là định nghĩa về "dấu chân" vật lý của robot, dùng để tính toán va chạm. Mỗi cặp tọa độ đại diện cho một điểm góc của hình chữ nhật bao quanh robot. Các giá trị này nên được điều chỉnh để chính xác phản ánh kích thước vật lý của robot.
+
+4.map_topic: /map
+Tên topic mà từ đó costmap nhận dữ liệu bản đồ tĩnh. Đây là tên topic chuẩn cho bản đồ trong ROS.
+
+5.subscribe_to_updates: true
+Nếu được đặt thành true, costmap sẽ liên tục cập nhật từ các bản cập nhật bản đồ, cho phép nó phản ứng với thay đổi trong môi trường.
+
+6.global_frame: odom
+Frame tham chiếu toàn cục mà costmap sử dụng để xác định vị trí và hướng của robot.
+
+7.robot_base_frame: base_link
+Frame liên quan đến cơ sở của robot, dùng để biến đổi giữa các tọa độ của robot và các frame khác.
+
+8.update_frequency: 30.0
+Tần suất cập nhật costmap, tính bằng Hz. Một tần suất cập nhật cao có thể cải thiện độ chính xác nhưng đòi hỏi nhiều tài nguyên hơn.
+
+9.publish_frequency: 30.0
+Tần suất mà costmap xuất bản thông tin của nó, tính bằng Hz. Giống như update_frequency, giá trị cao hơn cũng đòi hỏi nhiều tài nguyên hệ thống hơn.
+
+10.rolling_window: false
+Nếu được đặt thành true, costmap sẽ di chuyển cùng với robot, chỉ hiển thị một "cửa sổ" của bản đồ xung quanh vị trí hiện tại của robot. Đặt false cho thấy bản đồ lớn hơn, không di chuyển cùng với robot.
+
+Các Plugin và Lớp của Chúng 
+
+11. Plugins
+Đây là các thành phần có thể cắm vào costmap để cung cấp các chức năng như xử lý các chướng ngại vật, bản đồ tĩnh và áp suất chướng ngại vật. Các plugin cụ thể như StaticLayer, ObstacleLayer, và InflationLayer được cấu hình để thực hiện các nhiệm vụ khác nhau.
+
+12. inflation_layer: inflation_radius: 0.2
+Bán kính tạo đệm quanh các chướng ngại vật, tính bằng mét, để tránh va chạm của robot. Đây là một phần của cách tiếp cận thận trọng để điều hướng.
+
+*/

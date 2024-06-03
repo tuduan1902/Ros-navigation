@@ -5,3 +5,22 @@ global_costmap:
   transform_tolerance: 0.2
   resolution: 0.1
 
+// giải thích code  
+
+/*
+1.global_frame: odom
+Đây là frame tham chiếu toàn cục mà global_costmap sử dụng để thực hiện các tính toán và biến đổi dữ liệu. odom (odometry) thường được sử dụng làm frame gốc cho các tính toán liên quan đến vị trí và chuyển động của robot. Nó thể hiện vị trí của robot dựa trên dữ liệu odometry, tức là tính toán dựa trên cảm biến chuyển động và hệ thống điều khiển.
+
+2.update_frequency: 30.0
+Đây là tốc độ (tần suất, đơn vị Hz) mà global_costmap cập nhật thông tin của nó. Giá trị 30.0 Hz là khá cao, điều này có nghĩa là global_costmap sẽ cập nhật thông tin 30 lần mỗi giây, đảm bảo rằng dữ liệu luôn mới và phản ánh chính xác môi trường xung quanh robot.
+
+3.publish_frequency: 30.0
+Tương tự như update_frequency, đây là tần suất mà global_costmap sẽ xuất bản (phát) thông tin của nó ra ngoài. Một tần suất cao giúp đảm bảo rằng các thành phần khác của hệ thống điều hướng nhận được thông tin cập nhật liên tục và kịp thời.
+
+4.transform_tolerance: 0.2
+Đây là khoảng thời gian chấp nhận được (đơn vị là giây) cho các biến đổi giữa các frames thời gian khác nhau. Giá trị này giúp xử lý các trễ trong hệ thống khi biến đổi từ frame này sang frame khác, đặc biệt là khi có sự chậm trễ trong mạng hoặc trong quá trình tính toán.
+
+5.resolution: 0.1
+Đây là độ phân giải của global_costmap, đo bằng mét. Giá trị 0.1 có nghĩa là mỗi ô (cell) trên bản đồ tương đương với một khu vực 0.1m x 0.1m trong thế giới thực. Độ phân giải này ảnh hưởng đến độ chính xác của bản đồ cũng như kích thước tổng thể của bản đồ trong bộ nhớ.
+
+*/

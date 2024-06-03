@@ -16,4 +16,38 @@ local_costmap:
     observation_sources: laser_scan_sensor
     laser_scan_sensor: {sensor_frame: laser, data_type: LaserScan, topic: scan, marking: true, clearing: true}
 
+// giải thích code
+
+/*
+1.update_frequency: 30.0
+Đây là tần suất (Hz) mà local_costmap cập nhật thông tin của nó. Giá trị cao này đảm bảo rằng costmap phản ánh chính xác các thay đổi trong môi trường, quan trọng cho việc điều hướng và tránh vật cản.
+
+2.publish_frequency: 30.0
+Tần suất này quy định bao nhiêu lần mỗi giây thông tin từ local_costmap được phát ra. Điều này giúp các thành phần khác của hệ thống điều hướng nhận được dữ liệu mới nhất một cách kịp thời.
+
+3.transform_tolerance: 0.2
+Đây là thời gian chấp nhận chậm trễ (giây) trong việc biến đổi dữ liệu giữa các khung (frames). Giá trị này giúp xử lý các độ trễ trong hệ thống, đảm bảo rằng dữ liệu vẫn hợp lệ khi được sử dụng.
+
+4.static_map: false
+Thiết lập này chỉ ra rằng local_costmap không sử dụng bản đồ tĩnh đã được tạo trước. Điều này phù hợp cho các môi trường động, nơi các chướng ngại vật và điều kiện môi trường có thể thay đổi.
+
+5.rolling_window: true
+Điều này chỉ ra rằng local_costmap sẽ di chuyển cùng với robot, cập nhật chỉ một phần của bản đồ xung quanh vị trí hiện tại của robot. Điều này rất hữu ích trong điều hướng gần và tránh chướng ngại vật.
+
+6.resolution: 0.1
+Độ phân giải của bản đồ, trong mét. Mỗi ô trên bản đồ biểu diễn một khu vực vuông 0.1m x 0.1m trong thế giới thực.
+
+7.inflation_radius: 0.1
+Đây là bán kính, trong mét, mà costmap sẽ sử dụng để tạo "vùng phồng" quanh chướng ngại vật, đảm bảo rằng robot giữ một khoảng cách an toàn khi điều hướng xung quanh các vật thể.
+
+8.width: 1.0 và height: 1.0
+Kích thước của local_costmap, trong mét. Đây là kích thước của khu vực mà costmap sẽ bao phủ, tính từ vị trí hiện tại của robot.
+
+9. plugins và obstacle_layer
+Cấu hình này chỉ định các plugin được sử dụng cho local_costmap. ObstacleLayer là lớp được sử dụng để xử lý và thêm thông tin về các chướng ngại vật vào costmap.
+observation_sources: laser_scan_sensor cho biết nguồn cảm biến được sử dụng.
+laser_scan_sensor cấu hình cụ thể cho cảm biến laser, bao gồm khung (frame) cảm biến, loại dữ liệu, chủ đề, và hành vi đánh dấu và xóa.
+
+*/
+
 
