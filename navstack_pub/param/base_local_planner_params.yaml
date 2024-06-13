@@ -16,3 +16,28 @@ TrajectoryPlannerROS:
   xy_goal_tolerance: 0.15
   yaw_goal_tolerance: 0.25
 
+// Giair thích code
+
+/*
+1.max_vel_x: 0.12
+Tốc độ tối đa mà robot có thể di chuyển về phía trước, đơn vị mét/giây. Giá trị này nên phù hợp với khả năng phần cứng và an toàn của robot.
+
+2.min_vel_x: 0.11
+Tốc độ tối thiểu tiến về phía trước mà robot cần duy trì khi di chuyển, cũng đo bằng mét/giây. Giá trị này giúp đảm bảo robot không dừng hẳn khi còn cách xa mục tiêu.
+
+3.Các dòng được comment (chú thích)
+Các tham số như max_vel_theta, min_vel_theta, và min_in_place_vel_theta liên quan đến tốc độ góc tối đa, tối thiểu và tốc độ góc tối thiểu tại chỗ của robot, nhưng chúng đã bị comment và do đó không được sử dụng trong cấu hình hiện tại. Nếu cần, bạn có thể kích hoạt lại chúng để kiểm soát tốt hơn tốc độ xoay của robot.
+
+4.holonomic_robot: false
+Tham số này chỉ ra rằng robot không phải là holonomic, tức là robot không thể di chuyển ngang một cách độc lập với hướng của nó.
+
+5.meter_scoring: true
+Khi được đặt thành true, điều này chỉ ra rằng các tính toán liên quan đến khoảng cách đến mục tiêu sẽ sử dụng mét làm đơn vị thay vì số lượng ô trên costmap, giúp tăng độ chính xác của việc điều hướng.
+
+6.xy_goal_tolerance: 0.15
+Độ chính xác về khoảng cách mà robot cần đạt được so với mục tiêu, đo bằng mét. Nếu robot dừng trong khoảng này, nó sẽ được coi là đã đạt tới mục tiêu.
+
+7.yaw_goal_tolerance: 0.25
+Độ chính xác về góc mà robot cần đạt được so với hướng mục tiêu, đo bằng radian. Giá trị này xác định khoảng chấp nhận góc khi robot dừng lại tại mục tiêu.
+
+*/

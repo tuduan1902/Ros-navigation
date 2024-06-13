@@ -34,7 +34,7 @@ inflation_layer:
 2. raytrace_range: 0.5
 Khoảng cách mà costmap sẽ sử dụng để "xóa" các chướng ngại vật không còn được nhìn thấy nữa từ các điểm nhận dữ liệu cảm biến. Giá trị này thường lớn hơn obstacle_range trong hầu hết các cài đặt.
 
-3. footprint: [[-0.14, -0.14], [-0.14, 0.14], [0.14, 0.14], [0.14, -0.14]]
+3. footprint: [[-0.25, 0.1975], [0.25, 0.1975], [0.25, -0.1975], [-0.25, -0.1975]]
 Đây là định nghĩa về "dấu chân" vật lý của robot, dùng để tính toán va chạm. Mỗi cặp tọa độ đại diện cho một điểm góc của hình chữ nhật bao quanh robot. Các giá trị này nên được điều chỉnh để chính xác phản ánh kích thước vật lý của robot.
 
 4.map_topic: /map
